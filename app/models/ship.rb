@@ -4,10 +4,11 @@ class Ship
 
   attr_accessor :name, :type, :booty
 
-  def initialize(name, type, booty)
-    @name = name
-    @type = type
-    @booty = booty
+  def initialize(hash)
+    @name = hash[:name]
+    @type = hash[:type]
+    @booty = hash[:booty]
+    @@all << self
   end
 
   def self.all
