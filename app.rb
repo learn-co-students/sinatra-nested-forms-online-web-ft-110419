@@ -5,5 +5,20 @@ module FormsLab
 
     # code other routes/actions here
 
+    get '/' do
+      erb :root
+    end
+
+    get '/new' do
+      erb :'pirates/new'
+    end
+
+    post '/pirates' do
+      @pirate = Pirate.new(params["pirate"])
+      @ships = Ship.create_ships(params["pirate"]["ships"])
+      
+      erb :'pirates/show'
+    end
+
   end
 end
