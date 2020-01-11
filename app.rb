@@ -8,16 +8,16 @@ module FormsLab
     end
 
     get '/new' do 
-      erb :'/pirates/new'
+      erb :'/pirates/new' #includes the pirate form on this route
     end
 
-    post '/pirates' do 
+    post '/pirates' do #includes the user submitted pirate data
       @pirate = Pirate.new(params[:pirate]) 
-
-      params[:pirate][:ships].each do |details|
-        Ship.new(details)
+# binding.pry
+      params[:pirate][:ships].each do |details| #ships has an array of hashes
+        Ship.new(details) # ship.new will use the array of hashes to create a new ship instance
       end
-      erb :'/pirates/show'
+      erb :'/pirates/show' #displays how the results will be shown
     end
   end
 end
